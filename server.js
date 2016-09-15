@@ -8,8 +8,8 @@ var mongoose = require('mongoose');
 var app = express();
 console.log("hello, is this thing on");
 
-// app.use(body-parser.json());
-// app.use(body-parser.urlencoded({extended: true}));
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
 
 app.use(express.static('public'));
 // app.use(bodyParser.urlencoded({extended: true}));
@@ -55,7 +55,7 @@ var QuotedModel = require('./models/quoted.js');
 // });
 
 
-// Bring in our Models: quoted
+
 // var exampleQuoted = new QuotedModel({
 // 	name: "Pedro",
 // 	quote: "hello yo!"
@@ -83,7 +83,9 @@ app.get('/', function(req, res) {
 
 
 
-
+//lists out all the Sales data in json on html page 
+//NEED TO FIGURE OUT HOW TO NOT ADD ANYMORE DATA INTO DATABASE UNLESS A NEW MONTH WITH SALES INFO
+//HAS OCCURRED
 app.get('/sales', function(req, res) {
 	SalesModel.find({}, function(err, doc){
 		if(err){
@@ -95,7 +97,7 @@ app.get('/sales', function(req, res) {
 });
 
 
-// should this be submit
+// submit the quote and name data the user entered in html form then redirect to the index.html page
 app.post('/submit', function(req, res){
 	var newQuote = new QuotedModel(req.body);
 	console.log(req.body);
@@ -103,13 +105,13 @@ app.post('/submit', function(req, res){
 		if (err) {
 			res.send(err);
 		} else {
-				res.send(doc);
+				res.redirect("/");
 		}	
 	});
 });
 
 
-
+// this lists out all the data from the quote model
 app.get('/quoted', function(req, res) {
 	QuotedModel.find({}, function(err, doc) {
 		if(err){

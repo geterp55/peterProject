@@ -6,7 +6,25 @@
 const CHART = document.getElementById("lineChart");
 console.log(CHART);
 
-let lineChart = new Chart(CHART, {
+lineChart.data.datasets[0].data[0];
+lineChart.data.datasets[0].data[1];
+lineChart.data.datasets[0].data[2];
+lineChart.data.datasets[0].data[3];
+
+
+
+$.ajax({
+	url: '/sales',
+	sucess: function(result) {
+    var myData = [];
+	var twoFive = function(result){
+		for(var i = 0; i < result.length;i++){
+			myData[i] = result[i].revenue;
+		}
+	}
+	twoFive();
+
+	let lineChart = new Chart(CHART, {
 	type: 'line',
 	data: {
 		    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
@@ -30,7 +48,7 @@ let lineChart = new Chart(CHART, {
 		            pointHoverBorderWidth: 2,
 		            pointRadius: 1,
 		            pointHitRadius: 10,
-		            data: [65, 59, 80, 81, 56, 55, 40],
+		            data: myData,
 		            spanGaps: false,
 		        },
 		        {
@@ -52,7 +70,7 @@ let lineChart = new Chart(CHART, {
 		            pointHoverBorderWidth: 2,
 		            pointRadius: 1,
 		            pointHitRadius: 10,
-		            data: [55, 65, 85, 85, 75, 85, 40],
+		            data: [],
 		            spanGaps: false,
 		        }
 
@@ -68,7 +86,13 @@ let lineChart = new Chart(CHART, {
 		  		}]
 		  	}
 		  }  
-		});  	
+		}); 
+
+	}
+}).
+
+console.log()
+ 	
 
 
 // module.exports =  Chart;
