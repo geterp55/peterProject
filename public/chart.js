@@ -6,23 +6,23 @@
 const CHART = document.getElementById("lineChart");
 console.log(CHART);
 
-lineChart.data.datasets[0].data[0];
-lineChart.data.datasets[0].data[1];
-lineChart.data.datasets[0].data[2];
-lineChart.data.datasets[0].data[3];
+// lineChart.data.datasets[0].data[0];
+// lineChart.data.datasets[0].data[1];
+// lineChart.data.datasets[0].data[2];
+// lineChart.data.datasets[0].data[3];
 
 
 
-$.ajax({
-	url: '/sales',
-	sucess: function(result) {
-    var myData = [];
-	var twoFive = function(result){
-		for(var i = 0; i < result.length;i++){
-			myData[i] = result[i].revenue;
-		}
-	}
-	twoFive();
+// $.ajax({
+// 	url: '/sales',
+// 	sucess: function(result) {
+//     var myData = [];
+// 	var twoFive = function(result){
+// 		for(var i = 0; i < result.length;i++){
+// 			myData[i] = result[i].revenue;
+// 		}
+// 	}
+// 	twoFive();
 
 	let lineChart = new Chart(CHART, {
 	type: 'line',
@@ -48,7 +48,7 @@ $.ajax({
 		            pointHoverBorderWidth: 2,
 		            pointRadius: 1,
 		            pointHitRadius: 10,
-		            data: myData,
+		            data: [100,200,300,400,500,600,700],
 		            spanGaps: false,
 		        },
 		        {
@@ -70,7 +70,7 @@ $.ajax({
 		            pointHoverBorderWidth: 2,
 		            pointRadius: 1,
 		            pointHitRadius: 10,
-		            data: [],
+		            data: [700,600,500,400,300,200,100],
 		            spanGaps: false,
 		        }
 
@@ -88,8 +88,8 @@ $.ajax({
 		  }  
 		}); 
 
-	}
-}).
+	// }
+// }).
 
 console.log()
  	
