@@ -7,10 +7,13 @@ var Schema = mongoose.Schema;
 //make SalesSchema
 
 var SalesSchema = new Schema({
-	revenue: {
+	sales: {
 		type: Number
 	},
 	month: {
+		type: Number
+	},
+	year: {
 		type: Number
 	}
 });

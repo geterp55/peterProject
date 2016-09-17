@@ -13,21 +13,28 @@ console.log(CHART);
 
 
 
-// $.ajax({
-// 	url: '/sales',
-// 	sucess: function(result) {
-//     var myData = [];
-// 	var twoFive = function(result){
-// 		for(var i = 0; i < result.length;i++){
-// 			myData[i] = result[i].revenue;
-// 		}
-// 	}
-// 	twoFive();
+
+
+$.ajax({
+	url: '/sales/',
+	success: function(result) {
+		// "_id" : ObjectId("57dd092a6aeb44a01806e63b"
+ //    var myData2016 = [];
+	
+	// (function(){
+
+	// 	for(var i = 0; i < result.length;i++){
+	// 		myData2016[i] = result[i].revenue;
+	// 	}
+
+	// }) ();
+	
+	// $(document).ready(function(){
 
 	let lineChart = new Chart(CHART, {
 	type: 'line',
 	data: {
-		    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+		    labels: [1,2,3,4,5,6,7,8,9],
 		    datasets: [
 		        {
 		            label: "2016 Sales",
@@ -48,7 +55,7 @@ console.log(CHART);
 		            pointHoverBorderWidth: 2,
 		            pointRadius: 1,
 		            pointHitRadius: 10,
-		            data: [100,200,300,400,500,600,700],
+		            data: result.myData2016,
 		            spanGaps: false,
 		        },
 		        {
@@ -70,7 +77,7 @@ console.log(CHART);
 		            pointHoverBorderWidth: 2,
 		            pointRadius: 1,
 		            pointHitRadius: 10,
-		            data: [700,600,500,400,300,200,100],
+		            data: result.myData2015,
 		            spanGaps: false,
 		        }
 
@@ -86,10 +93,11 @@ console.log(CHART);
 		  		}]
 		  	}
 		  }  
-		}); 
+		});
 
-	// }
-// }).
+
+		}
+	}); //ajax call
 
 console.log()
  	

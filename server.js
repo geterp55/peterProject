@@ -33,41 +33,7 @@ db.once('open', function() {
 // Bring in our Models: sales
 var SalesModel = require('./models/sales.js');
 var QuotedModel = require('./models/quoted.js');
-// Create a new Sales by using the Salesmodel as a class.
-// The "unique" rule in the sales model's schema
-// will preven duplicate sales from being added to the server.
-// Otherwise this program wouldn't work as we'd want it to.
-// Below will use var SalesModel to bridge the format and the data from mongoose 
-// connect and save into the databas.
-// var exampleSales = new SalesModel({
-// 	Revenue: 678.96,
-// 	Month: 8
 
-// });
-
-// exampleSales.save(function(err, doc) {
-// 	if(err) {
-// 		console.log(err);
-// 	}
-// 	else {
-// 		console.log('created new doc:', doc);
-// 	}
-// });
-
-
-
-// var exampleQuoted = new QuotedModel({
-// 	name: "Pedro",
-// 	quote: "hello yo!"
-// });
-
-// exampleQuoted.save(function(err, doc) {
-// 	if(err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log('created new doc:', doc);
-// 	}
-// });
 
 
 
@@ -81,44 +47,76 @@ app.get('/', function(req, res) {
 });
 
 
-
+'/movies/db/keywdad&date'
 
 //lists out all the Sales data in json on html page 
-//NEED TO FIGURE OUT HOW TO NOT ADD ANYMORE DATA INTO DATABASE UNLESS A NEW MONTH WITH SALES INFO
-//HAS OCCURRED
-app.get('/sales', function(req, res) {
-	SalesModel.find({}, function(err, doc){
+//make the routes more specific on the data it will produce
+app.get('/sales/', function(req, res) {
+	console.log("hit");
+	// var year = req.params.year;
+	// console.log(year);
+	// console.log(typeof year);
+
+
+	SalesModel.find({year : 2016}, function(err, doc){
+
+		var total = {
+			myData2016 : [],
+			myData2015 : []
+		}
+
 		if(err){
 			res.send(err);
 		} else {
-			res.send(doc);
-		}
-	});
-});
+			//push 2016 mongo data into total.myData 2016 empty array 
+			for (var i = 0;i < doc.length;i++){
+				total.myData2016[i] = doc[i].sales
+			}
+
+			SalesModel.find({year : 2015}, function(err, doc){
+				if(err) {
+					res.send(err);
+				} else {
+					
+					for (var i = 0;i < doc.length;i++){
+					total.myData2015[i] = doc[i].sales		
+				}
+
+				res.send(total);
+			}
+			
+			
+		});
+	};
 
 
-// submit the quote and name data the user entered in html form then redirect to the index.html page
-app.post('/submit', function(req, res){
-	var newQuote = new QuotedModel(req.body);
-	console.log(req.body);
-	newQuote.save(function(err, doc) {
-		if (err) {
-			res.send(err);
-		} else {
-				res.redirect("/");
-		}	
-	});
-});
+
+		// submit the quote and name data the user entered in html form then redirect to the index.html page
+		app.post('/submit', function(req, res){
+			var newQuote = new QuotedModel(req.body);
+			console.log(req.body);
+			console.log(req.query);
+			newQuote.save(function(err, doc) {
+				if (err) {
+					res.send(err);
+				} else {
+						res.redirect("/");
+				}	
+			});
+		});
 
 
-// this lists out all the data from the quote model
-app.get('/quoted', function(req, res) {
-	QuotedModel.find({}, function(err, doc) {
-		if(err){
-			res.send(err);
-		} else {
-			res.send(doc);
-		}
+		// this lists out all the data from the quote model
+		app.get('/quoted', function(req, res) {
+			QuotedModel.find({}, function(err, doc) {
+				if(err){
+					res.send(err);
+				} else {
+					res.send(doc);
+				}
+			});
+		});
+
 	});
 });
 
