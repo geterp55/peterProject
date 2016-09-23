@@ -4,6 +4,7 @@
 
 
 const CHART = document.getElementById("lineChart");
+
 console.log(CHART);
 
 // lineChart.data.datasets[0].data[0];
@@ -18,18 +19,7 @@ console.log(CHART);
 $.ajax({
 	url: '/sales/',
 	success: function(result) {
-		// "_id" : ObjectId("57dd092a6aeb44a01806e63b"
- //    var myData2016 = [];
-	
-	// (function(){
 
-	// 	for(var i = 0; i < result.length;i++){
-	// 		myData2016[i] = result[i].revenue;
-	// 	}
-
-	// }) ();
-	
-	// $(document).ready(function(){
 
 	let lineChart = new Chart(CHART, {
 	type: 'line',
@@ -100,7 +90,8 @@ $.ajax({
 	}); //ajax call
 
 console.log()
+
+
  	
 
 
-// module.exports =  Chart;
