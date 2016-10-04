@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Watson Speech to Text client example</title>
+
+    
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="homebase col s6 m6 l6">
+        <form role="form">
+            <div>
+                <video id="video" width="640" height="480" autoplay></video>
+                <button id="snap">Snap Photo</button>
+                <canvas id="canvas" width="640" height="480"></canvas>
+            </div>
+    </div>
+
+
+    <div>
+            <label><h3>Speak into each line of this animal submission form</h3></label>
+            <br>
+            <div class="form-group">
+                
+                <div>
+                    <label>Pet ID#</label>
+                        <input type="text" class="" id="petIdInput" placeholder="Input field">
+                    <button id="PetIdButton">mic</button>
+                </div>
+                <br>
+
+                <div>
+                    <label for="">Name</label>
+                        <input type="text" class="" id="firstNameInput" placeholder="Input field">
+                    <button id="FirstNameButton">mic</button>
+                </div>
+                <br>
+                
+                <div>
+                    <label>Animal Type</label>
+                        <input type="text" class="" id="animalTypeInput" placeholder="Input field">
+                    <button id="AnimalTypeButton">mic</button>
+                </div>
+                <br>
+
+                <div>
+                    <label>Breed</label>
+                        <input type="text" class="" id="breedInput" placeholder="Input field">
+                    <button id="BreedButton">mic</button>
+                </div>
+                <br>
+
+                <div>
+                    <label>Color</label>
+                        <input type="text" class="" id="colorInput" placeholder="Input field">
+                    <button id="ColorButton">mic</button>
+                </div>
+                <br>
+
+                <div>
+                    <label>Gender</label>
+                        <input type="text" class="" id="genderInput" placeholder="Input field">
+                    <button id="GenderButton">mic</button>
+                </div>
+                <br>
+                <div>
+                    <label>Age</label>
+                        <input type="text" class="" id="ageInput" placeholder="Input field">
+                    <button id="AgeButton">mic</button>
+                </div>
+                <br>
+                
+                <div>
+                    <label>Vaccination Current</label>
+                        <input type="text" class="" id="vaccinationInput" placeholder="Input field">
+                    <button id="VaccinationButton">mic</button>
+                </div>
+                <br>
+                
+                <div>
+                    <label>Description</label>
+                        <input type="text" class="" id="descriptionInput" placeholder="Input field">
+                    <button id="DescriptionButton">mic</button>
+                </div>
+                <br>
+                <div>
+                    <button type="submit" id="End">End</button>
+                </div>
+            </div>   
+        </form>
+    </div>
+</div>
+  
+
+<div>
+Lonely div
+</div>
+
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+          
+
+<script src="speech.js"></script>
+<script src="talk.js"></script>
+<script src="video.js"></script>
+
+
+
+
+</html>
+
+ 
